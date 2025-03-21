@@ -37,12 +37,33 @@ val poppins40014_080422 = TextStyle(
     textAlign = TextAlign.Center,
     color = _080422
 )
+val poppins40016_080422 = TextStyle(
+    fontFamily = poppinsRegular,
+    fontWeight = FontWeight(400),
+    fontSize = 16.sp,
+    textAlign = TextAlign.Center,
+    color = _080422
+)
 val poppins40012_080422 = TextStyle(
     fontFamily = poppinsRegular,
     fontWeight = FontWeight(400),
     fontSize = 12.sp,
     textAlign = TextAlign.Center,
     color = _080422
+)
+val poppins40023White = TextStyle(
+    fontFamily = poppinsRegular,
+    fontWeight = FontWeight(400),
+    fontSize = 23.sp,
+    textAlign = TextAlign.Center,
+    color = Color.White
+)
+val poppins40012_080422opasity20 = TextStyle(
+    fontFamily = poppinsRegular,
+    fontWeight = FontWeight(400),
+    fontSize = 12.sp,
+    textAlign = TextAlign.Center,
+    color = _080422opasity20
 )
 val poppins50032Bold_09703E = TextStyle(
     fontFamily = poppinsBold,
@@ -58,6 +79,13 @@ val poppins50026Bold_09703E = TextStyle(
     textAlign = TextAlign.Center,
     color = _09703E
 )
+val poppins50026Bold_080422 = TextStyle(
+    fontFamily = poppinsBold,
+    fontWeight = FontWeight(500),
+    fontSize = 26.sp,
+    textAlign = TextAlign.Center,
+    color = _080422
+)
 val poppins50016Bold_White = TextStyle(
     fontFamily = poppinsBold,
     fontWeight = FontWeight(500),
@@ -71,4 +99,11 @@ val poppins60032Bold_Black = TextStyle(
     fontSize = 32.sp,
     textAlign = TextAlign.Center,
     color = Color.Black
+)
+val poppins60012Bold_White = TextStyle(
+    fontFamily = poppinsBold,
+    fontWeight = FontWeight(600),
+    fontSize = 12.sp,
+    textAlign = TextAlign.Center,
+    color = Color.White
 )
