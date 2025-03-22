@@ -8,8 +8,17 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.adabank.feature_app.domain.usecase.Auth.UseFingerprintUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FingerprintViewModel : ViewModel() {
+@HiltViewModel
+class FingerprintViewModel @Inject constructor(
+    private val useFingerprintUseCase: UseFingerprintUseCase
+) : ViewModel() {
 
     private val _state = mutableStateOf(FingerprintState())
     val state: State<FingerprintState> = _state
@@ -22,14 +31,20 @@ class FingerprintViewModel : ViewModel() {
                     .setNegativeButton(
                         "cancel",
                         event.value.mainExecutor
-                    ) { dialog, which -> }
+                    ) { _, _ -> }
                     .build().authenticate(
                     CancellationSignal(),
                     event.value.mainExecutor,
                     object : BiometricPrompt.AuthenticationCallback() {
                         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                             super.onAuthenticationSucceeded(result)
-                            Log.e("auth", "success")
+
+                            viewModelScope.launch(Dispatchers.IO) {
+                                val pinCode = useFingerprintUseCase()
+                                if (!pinCode.isNullOrBlank()){
+                                    Log.e("auth", pinCode)
+                                }
+                            }
                         }
                     }
                 )

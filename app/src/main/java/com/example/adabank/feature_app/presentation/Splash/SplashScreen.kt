@@ -20,6 +20,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -27,9 +28,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.adabank.R
 import com.example.adabank.feature_app.presentation.Route
+import com.example.adabank.feature_app.presentation.common.CustomAlertDialog
 import com.example.adabank.feature_app.presentation.ui.theme._09703E
 import com.example.adabank.feature_app.presentation.ui.theme._106048
 import com.example.adabank.feature_app.presentation.ui.theme._F6F6F6
@@ -39,8 +42,22 @@ import com.example.adabank.feature_app.presentation.ui.theme.poppins60024Bold_08
 
 @Composable
 fun SplashScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: SplashViewModel = hiltViewModel()
 ) {
+    val state = viewModel.state.value
+
+    LaunchedEffect(!state.isUserRegistered) {
+        if (state.isUserRegistered){
+            navController.navigate(Route.FingerprintScreen.route)
+        }
+    }
+
+    if (state.exception.isNotEmpty()){
+        CustomAlertDialog(state.exception) {
+            viewModel.resetException()
+        }
+    }
 
     Column(
         modifier = Modifier

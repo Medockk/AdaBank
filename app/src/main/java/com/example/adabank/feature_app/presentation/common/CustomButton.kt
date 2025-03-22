@@ -9,12 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.adabank.feature_app.presentation.ui.theme._09703E
 import com.example.adabank.feature_app.presentation.ui.theme.poppins50016Bold_White
-
+//привет сенечка
+//как дела?????
+//что делаешь???
+//что кушал???
+//как поспал??
+//я надеюсь ты меня не убъешь за это <3 мы любя
 @Composable
 fun CustomButton(
     text: String,
-    enabled: Boolean = true,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     Button(

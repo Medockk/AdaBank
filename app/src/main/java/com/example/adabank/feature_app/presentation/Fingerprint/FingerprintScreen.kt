@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.adabank.R
 import com.example.adabank.feature_app.presentation.common.CustomBackIcon
@@ -33,7 +33,7 @@ import com.example.adabank.feature_app.presentation.ui.theme.poppins60024Bold_08
 @Composable
 fun FingerprintScreen(
     navController: NavController,
-    viewModel: FingerprintViewModel = viewModel()
+    viewModel: FingerprintViewModel = hiltViewModel()
 ) {
 
     val context = LocalContext.current

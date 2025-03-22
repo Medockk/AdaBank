@@ -1,7 +1,9 @@
 package com.example.adabank.di
 
+import android.content.Context
 import com.example.adabank.feature_app.data.repository.AuthRepositoryImpl
 import com.example.adabank.feature_app.domain.repository.AuthRepository
+import com.example.adabank.feature_app.domain.usecase.Auth.IsUserRegistrationUseCase
 import com.example.adabank.feature_app.domain.usecase.Auth.SendOtpUseCase
 import com.example.adabank.feature_app.domain.usecase.Auth.SetPinCodeUseCase
 import com.example.adabank.feature_app.domain.usecase.Auth.UseFingerprintUseCase
@@ -9,6 +11,7 @@ import com.example.adabank.feature_app.domain.usecase.Auth.VerifyOtpUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -17,8 +20,8 @@ import javax.inject.Singleton
 object AuthModule {
     @Provides
     @Singleton
-    fun getAuthRepo() : AuthRepository{
-        return AuthRepositoryImpl()
+    fun getAuthRepo(@ApplicationContext context: Context) : AuthRepository{
+        return AuthRepositoryImpl(context)
     }
 
     @Provides
@@ -40,5 +43,10 @@ object AuthModule {
     @Singleton
     fun verifyOtp(authRepository: AuthRepository) : VerifyOtpUseCase{
         return VerifyOtpUseCase(authRepository)
+    }
+    @Provides
+    @Singleton
+    fun isRegistration(authRepository: AuthRepository) : IsUserRegistrationUseCase{
+        return IsUserRegistrationUseCase(authRepository)
     }
 }

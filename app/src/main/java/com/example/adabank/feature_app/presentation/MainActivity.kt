@@ -1,10 +1,13 @@
 package com.example.adabank.feature_app.presentation
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -20,24 +23,30 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        window.decorView.apply {
-            this.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        }
         setContent {
             val navController = rememberNavController()
             AdaBankTheme {
-                NavHost(navController, startDestination = Route.SplashScreen.route){
-                    composable(Route.SplashScreen.route){
-                        SplashScreen(navController)
-                    }
-                    composable(Route.LoginScreen.route){
-                        LoginScreen(navController)
-                    }
-                    composable(Route.SetPinScreen.route){
-                        SetPinScreen(navController)
-                    }
-                    composable(Route.FingerprintScreen.route){
-                        FingerprintScreen(navController)
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    NavHost(
+                        navController,
+                        startDestination = Route.SplashScreen.route,
+                        modifier = Modifier.padding(it)
+                    ) {
+                        composable(Route.SplashScreen.route) {
+                            SplashScreen(navController)
+                        }
+                        composable(Route.LoginScreen.route) {
+                            LoginScreen(navController)
+                        }
+                        composable(Route.SetPinScreen.route) {
+                            SetPinScreen(navController)
+                        }
+                        composable(Route.FingerprintScreen.route) {
+                            FingerprintScreen(navController)
+                        }
                     }
                 }
             }

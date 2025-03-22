@@ -6,5 +6,6 @@ interface AuthRepository {
     suspend fun verifyOtp(phone: String, otp: String)
     suspend fun setPinCode(pinCode: String)
 
-    suspend fun useFingerprint()
+    suspend fun useFingerprint() : String?
+    suspend fun isUserRegistration() :Boolean
 }
