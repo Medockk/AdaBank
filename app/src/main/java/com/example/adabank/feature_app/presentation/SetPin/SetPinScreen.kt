@@ -43,6 +43,15 @@ fun SetPinScreen(
             navController.navigate(Route.FingerprintScreen.route)
         }
     }
+    LaunchedEffect(!state.isAuthenticated) {
+        if (state.isAuthenticated) {
+            navController.navigate(Route.HomeScreen.route){
+                popUpTo(Route.SetPinScreen.route){
+                    inclusive = true
+                }
+            }
+        }
+    }
 
     Column(
         modifier = Modifier

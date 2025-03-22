@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -19,19 +20,21 @@ import com.example.adabank.feature_app.presentation.ui.theme._080422
 @Composable
 fun CustomBackIcon(
     modifier: Modifier = Modifier,
+    background: Color = _080422,
     onClick: () -> Unit
 ) {
     Box(
         modifier = modifier
+            .size(27.dp)
             .clip(RoundedCornerShape(5.dp))
-            .background(_080422, RoundedCornerShape(5.dp))
+            .background(background, RoundedCornerShape(5.dp))
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ){
         Icon(
             imageVector = Icons.AutoMirrored.Default.ArrowBack,
             contentDescription = null,
-            tint = Color.White,
+            tint = if (background == _080422) Color.White else _080422,
             modifier = Modifier
                 .padding(5.dp)
         )

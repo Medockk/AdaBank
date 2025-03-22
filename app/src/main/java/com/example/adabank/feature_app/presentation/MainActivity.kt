@@ -12,9 +12,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.adabank.feature_app.presentation.Fingerprint.FingerprintScreen
+import com.example.adabank.feature_app.presentation.Home.HomeScreen
 import com.example.adabank.feature_app.presentation.Login.LoginScreen
+import com.example.adabank.feature_app.presentation.Notification.NotificationScreen
 import com.example.adabank.feature_app.presentation.SetPin.SetPinScreen
 import com.example.adabank.feature_app.presentation.Splash.SplashScreen
+import com.example.adabank.feature_app.presentation.TopUpWallet.TopUpWalletScreen
 import com.example.adabank.feature_app.presentation.ui.theme.AdaBankTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,6 +49,17 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Route.FingerprintScreen.route) {
                             FingerprintScreen(navController)
+                        }
+
+
+                        composable(Route.HomeScreen.route){
+                            HomeScreen(navController)
+                        }
+                        composable(Route.TopUpWalletScreen.route){
+                            TopUpWalletScreen(navController)
+                        }
+                        composable(Route.NotificationScreen.route){
+                            NotificationScreen(navController)
                         }
                     }
                 }

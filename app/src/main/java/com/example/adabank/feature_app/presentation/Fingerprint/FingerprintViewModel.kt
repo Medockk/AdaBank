@@ -3,7 +3,6 @@ package com.example.adabank.feature_app.presentation.Fingerprint
 import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.CancellationSignal
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -27,11 +26,15 @@ class FingerprintViewModel @Inject constructor(
     fun onEvent(event: FingerprintEvent) {
         when (event) {
             is FingerprintEvent.SetFingerprint -> {
-                BiometricPrompt.Builder(event.value).setTitle("Auth")
+                BiometricPrompt.Builder(event.value).setTitle("Authentication")
                     .setNegativeButton(
-                        "cancel",
+                        "enter pin code",
                         event.value.mainExecutor
-                    ) { _, _ -> }
+                    ) { _, _ ->
+                        _state.value = state.value.copy(
+                            isFingerprintCanceled = true
+                        )
+                    }
                     .build().authenticate(
                     CancellationSignal(),
                     event.value.mainExecutor,
@@ -42,7 +45,9 @@ class FingerprintViewModel @Inject constructor(
                             viewModelScope.launch(Dispatchers.IO) {
                                 val pinCode = useFingerprintUseCase()
                                 if (!pinCode.isNullOrBlank()){
-                                    Log.e("auth", pinCode)
+                                    _state.value = state.value.copy(
+                                        isAuthenticated = true
+                                    )
                                 }
                             }
                         }
