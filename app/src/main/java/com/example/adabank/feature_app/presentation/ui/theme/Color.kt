@@ -16,6 +16,7 @@ val _F6F6F6 = Color(0xFFF6F6F6)
 val _FAFAFA0D = Color(0x0DFAFAFA)
 val _080422 = Color(0xFF080422)
 val _080422opasity20 = Color(0x33080422)
+val _080422opasity5 = Color(0x0D080422)
 
 val _FAFAFAopasity60 = Color(0x99FAFAFA)
 val _FAFAFAopasity10 = Color(0x1AFAFAFA)

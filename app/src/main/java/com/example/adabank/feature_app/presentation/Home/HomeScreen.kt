@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.example.adabank.feature_app.presentation.Home
 
 import androidx.compose.foundation.BorderStroke
@@ -87,7 +89,9 @@ fun HomeScreen(
         listOf(
             ImageVector.vectorResource(R.drawable.more_icon),
             "More",
-            {}
+            {
+                navController.navigate(Route.MenuScreen.route)
+            }
         ),
     )
 
