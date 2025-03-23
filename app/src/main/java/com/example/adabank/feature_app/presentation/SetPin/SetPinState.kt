@@ -6,4 +6,5 @@ data class SetPinState(
 
     val pin: String = "",
     val isComplete: Boolean = false,
+    val isAuthenticated: Boolean = false,
 )

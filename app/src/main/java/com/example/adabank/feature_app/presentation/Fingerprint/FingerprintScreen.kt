@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.adabank.R
+import com.example.adabank.feature_app.presentation.Route
 import com.example.adabank.feature_app.presentation.common.CustomBackIcon
 import com.example.adabank.feature_app.presentation.common.CustomButton
 import com.example.adabank.feature_app.presentation.ui.theme._F6F6F6
@@ -37,11 +38,32 @@ fun FingerprintScreen(
 ) {
 
     val context = LocalContext.current
+    val state = viewModel.state.value
 
     LaunchedEffect(Unit) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             Log.e("auth", "auth")
             viewModel.onEvent(FingerprintEvent.SetFingerprint(context))
+        }
+    }
+
+    LaunchedEffect(!state.isAuthenticated) {
+        if (state.isAuthenticated) {
+            navController.navigate(Route.HomeScreen.route) {
+                popUpTo(Route.FingerprintScreen.route) {
+                    inclusive = true
+                }
+            }
+        }
+    }
+
+    LaunchedEffect(!state.isFingerprintCanceled) {
+        if (state.isFingerprintCanceled) {
+            navController.navigate(Route.SetPinScreen.route) {
+                popUpTo(Route.FingerprintScreen.route) {
+                    inclusive = true
+                }
+            }
         }
     }
 
@@ -91,7 +113,13 @@ fun FingerprintScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp),
-        ) { }
+        ) {
+            navController.navigate(Route.HomeScreen.route){
+                popUpTo(Route.FingerprintScreen.route){
+                    inclusive = true
+                }
+            }
+        }
         Spacer(Modifier.height(20.dp))
         CustomButton(
             text = "Skip",
@@ -99,6 +127,12 @@ fun FingerprintScreen(
                 .fillMaxWidth()
                 .height(60.dp)
                 .alpha(0.5f)
-        ) { }
+        ) {
+            navController.navigate(Route.HomeScreen.route){
+                popUpTo(Route.FingerprintScreen.route){
+                    inclusive = true
+                }
+            }
+        }
     }
 }
