@@ -27,10 +27,11 @@ import com.example.adabank.feature_app.presentation.ui.theme.poppins50026Bold_08
 fun CustomKeyboard(
     modifier: Modifier = Modifier,
     onNumberClick: (Int, Int) -> Unit,
-    zeroClick: () -> Unit,
+    zeroClick: (Int) -> Unit,
     deleteClick: () -> Unit,
     btnText: String = "Next",
     enabled: Boolean = true,
+    showButton: Boolean = true,
     onBtnClick: () -> Unit,
 ) {
     Column(
@@ -80,7 +81,7 @@ fun CustomKeyboard(
         ) {
             repeat(2) {
                 TextButton(
-                    onClick = zeroClick,
+                    onClick = { zeroClick(it) },
                     shape = CircleShape
                 ) {
                     Text(
@@ -116,13 +117,16 @@ fun CustomKeyboard(
                 }
             }
         }
-        CustomButton(
-            text = btnText,
-            enabled = enabled,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp),
-            onClick = onBtnClick
-        )
+
+        if (showButton) {
+            CustomButton(
+                text = btnText,
+                enabled = enabled,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                onClick = onBtnClick
+            )
+        }
     }
 }

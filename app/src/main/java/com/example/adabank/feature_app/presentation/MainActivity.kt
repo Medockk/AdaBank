@@ -14,11 +14,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.adabank.feature_app.presentation.Fingerprint.FingerprintScreen
 import com.example.adabank.feature_app.presentation.Home.HomeScreen
 import com.example.adabank.feature_app.presentation.Login.LoginScreen
-import com.example.adabank.feature_app.presentation.Menu.MenuScreen
 import com.example.adabank.feature_app.presentation.Notification.NotificationScreen
+import com.example.adabank.feature_app.presentation.Receipt.ReceiptScreen
 import com.example.adabank.feature_app.presentation.SetPin.SetPinScreen
 import com.example.adabank.feature_app.presentation.Splash.SplashScreen
 import com.example.adabank.feature_app.presentation.TopUpWallet.TopUpWalletScreen
+import com.example.adabank.feature_app.presentation.Transfer.TransferScreen
+import com.example.adabank.feature_app.presentation.TransferDetail.TransferDetailScreen
 import com.example.adabank.feature_app.presentation.ui.theme.AdaBankTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,8 +64,16 @@ class MainActivity : ComponentActivity() {
                         composable(Route.NotificationScreen.route){
                             NotificationScreen(navController)
                         }
-                        composable(Route.MenuScreen.route){
-                            MenuScreen(navController)
+
+
+                        composable(Route.TransferScreen.route){
+                            TransferScreen(navController)
+                        }
+                        composable(Route.TransferDetailScreen.route){
+                            TransferDetailScreen(navController)
+                        }
+                        composable(Route.ReceiptScreen.route){
+                            ReceiptScreen(navController)
                         }
                     }
                 }
