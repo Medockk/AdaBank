@@ -286,6 +286,7 @@ fun HomeScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                             )
+                            Spacer(Modifier.height(20.dp))
                         }
                     }
                 }

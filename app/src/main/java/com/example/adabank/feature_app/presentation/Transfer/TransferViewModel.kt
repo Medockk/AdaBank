@@ -34,7 +34,7 @@ class TransferViewModel @Inject constructor(
                     Contact(
                         it,
                         it.toString(),
-                        "",
+                        "https://uftclonibwagnofwkbtp.supabase.co/storage/v1/object/public/avatars//default_users_icon.png",
                         "name $it",
                         abs(Random.nextInt()).toString()
                     ).toContactDto()

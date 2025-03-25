@@ -111,7 +111,8 @@ fun TransferDetailScreen(
             )
             Spacer(Modifier.height(5.dp))
             TextField(
-                value = "$${state.amount}",
+                value = "$" + state.amount,
+                readOnly = true,
                 onValueChange = {
                     viewModel.onEvent(TransferDetailEvent.EnterAmount(it))
                 },
@@ -252,7 +253,8 @@ fun TransferDetailScreen(
                 CustomSwipeButton(
                     state = swipeToDismissBoxState,
                     modifier = Modifier
-                        .fillParentMaxWidth()
+                        .fillParentMaxWidth(),
+                    enabled = state.amount.isNotEmpty()
                 )
             }
         }

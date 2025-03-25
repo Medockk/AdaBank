@@ -3,6 +3,7 @@ package com.example.adabank.feature_app.presentation.TransferDetail
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.adabank.feature_app.presentation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,6 +17,7 @@ class TransferDetailViewModel @Inject constructor() : ViewModel() {
         when (event){
             is TransferDetailEvent.EnterAmount -> {
                 _state.value = state.value.copy(amount = event.value)
+                Route.TransferDetailScreen.amount = event.value
             }
             TransferDetailEvent.ResetException -> {
                 _state.value = state.value.copy(exception = "")

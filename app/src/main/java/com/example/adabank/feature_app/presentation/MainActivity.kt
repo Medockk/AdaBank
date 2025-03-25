@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.adabank.feature_app.presentation.Fingerprint.FingerprintScreen
 import com.example.adabank.feature_app.presentation.Home.HomeScreen
 import com.example.adabank.feature_app.presentation.Login.LoginScreen
+import com.example.adabank.feature_app.presentation.Menu.MenuScreen
 import com.example.adabank.feature_app.presentation.Notification.NotificationScreen
 import com.example.adabank.feature_app.presentation.Receipt.ReceiptScreen
 import com.example.adabank.feature_app.presentation.SetPin.SetPinScreen
@@ -63,6 +64,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Route.NotificationScreen.route){
                             NotificationScreen(navController)
+                        }
+                        composable(Route.MenuScreen.route){
+                            MenuScreen(navController)
                         }
 
 

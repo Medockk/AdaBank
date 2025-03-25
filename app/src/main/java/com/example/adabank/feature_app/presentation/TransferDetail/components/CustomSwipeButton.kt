@@ -28,11 +28,13 @@ import com.example.adabank.feature_app.presentation.ui.theme.poppins50016Bold_Wh
 fun CustomSwipeButton(
     state: SwipeToDismissBoxState,
     modifier: Modifier = Modifier,
-    text: String = "Swipe To Pay"
+    text: String = "Swipe To Pay",
+    enabled: Boolean = true,
 ) {
 
     SwipeToDismissBox(
         state = state,
+        gesturesEnabled = enabled,
         enableDismissFromEndToStart = false,
         backgroundContent = {
             Box(

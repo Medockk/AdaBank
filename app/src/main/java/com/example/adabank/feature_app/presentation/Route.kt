@@ -16,6 +16,7 @@ sealed class Route(val route: String) {
 
     data object TransferScreen : Route("TransferScreen")
     data object TransferDetailScreen : Route("TransferDetailScreen"){
+        var amount = ""
         var contact = Contact(0,"","","", "")
     }
     data object ReceiptScreen : Route("ReceiptScreen")

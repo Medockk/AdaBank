@@ -33,3 +33,5 @@ val _130F26 = Color(0xFF130F26)
 val _07041A17 = Color(0x1707041A)
 val _blackopasity50 = Color(0x80000000)
 val _whiteopasity50 = Color(0x80FFFFFF)
+
+val _05051A14 = Color(0x1405051A)
